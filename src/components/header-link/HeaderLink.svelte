@@ -1,40 +1,47 @@
 <script lang="ts">
   import cn from 'classnames';
+  import { Link } from 'svelte-routing';
 
   export let href: string;
-  export let active: boolean;
   export let title: string;
 
-  const classList = cn(
-    'link',
-    {
-      'link--active': active,
-    }
-  );
+  function getProps({ isCurrent }) {
+    const classList = cn(
+      'header-link',
+      {
+        'header-link--active': isCurrent,
+      }
+    );
+
+    return { 
+      class: classList,
+      title,
+    };
+  }
 </script>
 
-<a href={href} title={title} class={classList}>
+<Link to={href} getProps={getProps}>
   <slot></slot>
-</a>
+</Link>
 
 <style>
-  .link {
+  :global(.header-link) {
     font: 100 18px/18px 'Domine', serif;
     color: var(--color-link);
     text-decoration: none;
   }
 
-  .link:active,
-  .link:visited {
+  :global(.header-link:active),
+  :global(.header-link:visited) {
     color: var(--color-link);
   }
 
-  .link--active {
+  :global(.header-link--active) {
     color: var(--color-link-active);
   }
 
-  .link--active:active,
-  .link--active:visited {
+  :global(.header-link--active:active),
+  :global(.header-link--active:visited) {
     color: var(--color-link-active);
   }
 </style>

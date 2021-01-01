@@ -8,9 +8,16 @@
 }
 
 @font-face {
-  font-family: 'Domine';
+  font-family: Domine;
   src: url('/assets/fonts/Domine.ttf') format('truetype supports variations'),
        url('/assets/fonts/Domine.ttf') format('truetype-variations');
   font-weight: 100 1000;
   font-stretch: 1% 100%;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url('/assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
