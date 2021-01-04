@@ -1,4 +1,4 @@
-export enum TagTypes {
+export enum TagType {
   Empty,
   Filled,
   NoBorder,

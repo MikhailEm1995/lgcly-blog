@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Router, Route } from 'svelte-routing';
-  import Header from './components/header/Header.svelte';
-  import Home from './screens/home/Home.svelte';
+  import Header from './components/header/';
+  import Home from './screens/home';
   import { Routes } from './constants/urls';
 
   let url = Routes.Home;

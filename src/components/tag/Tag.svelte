@@ -1,33 +1,32 @@
 <script lang="ts">
   import cn from 'classnames';
-  import { TagTypes, DEFAULT_COLOR } from './constants';
+  import { TagType, DEFAULT_COLOR } from './constants';
 
-  export let type: TagTypes = TagTypes.Empty;
+  export let type: TagType = TagType.Empty;
   export let color: string = DEFAULT_COLOR;
-  export let onClick: () => void = () => {};
+  export let onClick: ((event: MouseEvent) => void) | null = null;
 
   $: cssVarStyles = `--color-tag: ${color}`;
-
   const typeColorMap = {
-    [TagTypes.Empty]: '',
-    [TagTypes.Filled]: 'filled',
-    [TagTypes.NoBorder]: 'noborder',
+    [TagType.Empty]: '',
+    [TagType.Filled]: 'filled',
+    [TagType.NoBorder]: 'noborder',
   };
-  const tagClassList = cn(
+  $: tagClassList = cn(
     'tag',
     {
-      [`tag--${typeColorMap[type]}`]: type !== TagTypes.Empty,
+      [`tag--${typeColorMap[type]}`]: type !== TagType.Empty,
     },
   );
-  const textClassList = cn(
+  $: textClassList = cn(
     'tag__text',
     {
-      'tag__text--light': type === TagTypes.Filled,
+      'tag__text--light': type === TagType.Filled,
     },
   );
 </script>
 
-<button class={tagClassList} onClick={onClick} style={cssVarStyles}>
+<button class={tagClassList} on:click={onClick} style={cssVarStyles}>
   <span class={textClassList}>#<slot></slot></span>
 </button>
 
@@ -41,12 +40,16 @@
     background: none;
   }
 
+  .tag:focus {
+    outline: none;
+  }
+
   .tag--filled {
     background: var(--color-tag);
   }
 
   .tag--noborder {
-    border: none;
+    border-color: transparent;
   }
 
   .tag__text {

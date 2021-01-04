@@ -1,5 +1,5 @@
 <script lang="ts">
-  import HeaderLink from '../header-link/HeaderLink.svelte';
+  import HeaderLink from '../header-link';
 </script>
 
 <header class="header">
