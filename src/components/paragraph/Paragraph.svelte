@@ -1,22 +1,32 @@
 <script lang="ts">
+  import uniq from 'lodash/uniq';
+
   import { search } from '../../entities/search';
 
   export let text: string = '';
 
   let searchQuery: string = '';
+  const disallowedSymbols = /[^a-zA-Z0-9]+/g;
 
-  function getInnerHtml() {
-    if (!searchQuery.length) {
-      return text;
-    }
-
+  function highlightSearchQuery() {
+    const words = uniq(searchQuery.split(' '));
+    const sanitizedWords = words
+      .map(word => word.replaceAll(disallowedSymbols, ''))
+      .filter(word => word);
+    const re = new RegExp(sanitizedWords.join('|'), 'gi');
     return text.replaceAll(
-      searchQuery,
-      `<span class="paragraph__queried-text">${searchQuery}</span>`,
+      re,
+      wrapTextWithHighlight('$&'),
     );
   }
 
-  $: innerHtml = getInnerHtml();
+  function wrapTextWithHighlight(text: string) {
+    return `<span class="paragraph__queried-text">${text}</span>`;
+  }
+
+  $: innerHtml = !searchQuery.length 
+    ? text
+    : highlightSearchQuery();
 
   search.subscribe((state) => {
     searchQuery = state.query;
@@ -34,9 +44,6 @@
   }
 
   :global(.paragraph__queried-text) {
-    display: inline-block;
-    padding: 0 4px;
-    font-size: 16px;
     background-color: var(--color-highlight);
   }
 </style>
