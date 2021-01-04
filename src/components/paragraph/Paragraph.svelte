@@ -29,6 +29,8 @@
   .paragraph {
     font: 18px/24px Roboto, sans-serif;
     letter-spacing: 1px;
+    padding: 0;
+    margin: 0;
   }
 
   :global(.paragraph__queried-text) {

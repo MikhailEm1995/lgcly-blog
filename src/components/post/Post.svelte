@@ -29,9 +29,7 @@
         <PostDate timestamp={timestamp} />
       {/if}
     </div>
-    <div class="post__brief">
-      <Paragraph text={brief} />
-    </div>
+    <Paragraph text={brief} />
   </Link>
   <div class="post__footer">
     <TagsList tags={tags} defaultType={TagType.NoBorder} />
@@ -39,14 +37,6 @@
 </div>
 
 <style>
-  :global(.post) {
-    padding-bottom: 30px;
-  }
-
-  :global(.post):hover {
-    box-shadow: 0 30px 39px -50px rgba(0, 0, 0, 0.3);
-  }
-
   :global(.post__link) {
     text-decoration: none;
     color: unset;
@@ -56,7 +46,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 10px;
   }
 
-  :global(.post__brief) {}
+  :global(.post__footer) {
+    margin-top: 20px;
+  }
 </style>

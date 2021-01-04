@@ -4,7 +4,7 @@
 
 <header class="header">
   <a href="/" title="Go to Home page">
-    <img width="72" height="88" src="/assets/images/logo.png" alt="logo">
+    <img width="72" height="88" src="/assets/images/logo.png" alt="logo" class="header__logo">
   </a>
   <nav class="navigation">
     <ul class="navigation__list">
@@ -27,8 +27,21 @@
 <style>
   .header {
     display: grid;
+    height: 60px;
     grid: auto-flow / repeat(2, 1fr);
     gap: 20px;
+    position: relative;
+    overflow: visible;
+  }
+
+  .header__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .navigation {
+    height: 100%;
   }
 
   .navigation__list {
@@ -36,13 +49,17 @@
     grid: auto-flow / repeat(4, 1fr);
     gap: 20px;
     list-style: none;
+    height: 100%;
     margin: 0;
     padding: 0;
   }
 
   .navigation__item {
-    display: inline-block;
+    display: inline-flex;
     margin: 0;
     padding: 0;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
   }
 </style>

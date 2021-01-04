@@ -4,7 +4,7 @@ export interface IPost {
   title: string;
   brief: string;
   tags: string[];
-  sections?: string[];
+  articleHtml?: string[];
 }
 
 export interface IPostsState {
