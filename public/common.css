@@ -37,6 +37,11 @@
   font-style: normal;
 }
 
+body {
+  height: 100%;
+  margin: 0;
+}
+
 .highlight {
   background-color: var(--color-highlight);
 }

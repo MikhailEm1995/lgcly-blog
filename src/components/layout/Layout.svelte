@@ -1,5 +1,6 @@
 <script lang="ts">
   import Header from '../header';
+  import Footer from '../footer';
 </script>
 
 <div class="layout">
@@ -7,11 +8,17 @@
   <main class="layout__content">
     <slot></slot>
   </main>
+  <Footer />
 </div>
 
 <style>
   .layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
     padding: 30px 200px 0;
+    box-sizing: border-box;
   }
 
   .layout__content {
