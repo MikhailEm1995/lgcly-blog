@@ -1,32 +1,14 @@
 <script lang="ts">
-  import uniq from 'lodash/uniq';
-
+  import { highlight } from '../../lib/highlight';
   import { search } from '../../entities/search';
 
   export let text: string = '';
 
   let searchQuery: string = '';
-  const disallowedSymbols = /[^a-zA-Z0-9]+/g;
-
-  function highlightSearchQuery() {
-    const words = uniq(searchQuery.split(' '));
-    const sanitizedWords = words
-      .map(word => word.replaceAll(disallowedSymbols, ''))
-      .filter(word => word);
-    const re = new RegExp(sanitizedWords.join('|'), 'gi');
-    return text.replaceAll(
-      re,
-      wrapTextWithHighlight('$&'),
-    );
-  }
-
-  function wrapTextWithHighlight(text: string) {
-    return `<span class="paragraph__queried-text">${text}</span>`;
-  }
 
   $: innerHtml = !searchQuery.length 
     ? text
-    : highlightSearchQuery();
+    : highlight(text, searchQuery);
 
   search.subscribe((state) => {
     searchQuery = state.query;

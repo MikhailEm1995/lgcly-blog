@@ -21,5 +21,10 @@
   .posts-list__item {
     display: block;
     margin-bottom: 40px;
+    transition: all 0.2s ease-in;
+  }
+
+  .posts-list__item:hover {
+    transform: translateX(1%);
   }
 </style>

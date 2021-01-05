@@ -6,6 +6,8 @@
   import { TagType } from '../tag';
   import Paragraph from '../paragraph';
   import TagsList from '../tags-list';
+  import { search } from '../../entities/search';
+  import { highlight } from '../../lib/highlight';
 
   export let href: string = '#';
   export let timestamp: number | null = null;
@@ -13,18 +15,28 @@
   export let title: string = '';
   export let brief: string = '';
 
+  let searchQuery: string = '';
+
+  $: titleHtml = !searchQuery.length
+    ? title
+    : highlight(title, searchQuery);
+
   function getProps() {
     return {
       class: 'post__link',
       title: `Read the post. Go to ${window.location.host}${href}`,
     };
   }
+
+  search.subscribe((state) => {
+    searchQuery = state.query;
+  });
 </script>
 
 <div class="post">
   <Link to={href} getProps={getProps}>
     <div class="post__header">
-      <Title type={TitleType.Secondary}>{title}</Title>
+      <Title type={TitleType.Secondary}>{@html titleHtml}</Title>
       {#if Number.isFinite(timestamp)}
         <PostDate timestamp={timestamp} />
       {/if}

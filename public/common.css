@@ -36,3 +36,7 @@
   font-weight: 900;
   font-style: normal;
 }
+
+.highlight {
+  background-color: var(--color-highlight);
+}
