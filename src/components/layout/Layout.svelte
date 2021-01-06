@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100%;
+    min-height: 100vh;
     padding: 30px 200px 0;
     box-sizing: border-box;
   }

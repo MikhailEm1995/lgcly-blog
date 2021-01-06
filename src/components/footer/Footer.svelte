@@ -24,6 +24,7 @@
     justify-content: flex-end;
     align-items: center;
     padding: 20px 0;
+    margin-top: auto;
   }
 
   .footer__appeal {
