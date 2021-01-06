@@ -6,6 +6,7 @@
 
   --color-link: var(--color-primary);
   --color-link-active: var(--color-secondary);
+  --color-button: var(--color-thirdly);
 }
 
 @font-face {

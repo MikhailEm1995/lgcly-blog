@@ -29,6 +29,11 @@
     font: 100 18px/18px 'Domine', serif;
     color: var(--color-link);
     text-decoration: none;
+    transition: transform 0.3s ease-in;
+  }
+
+  :global(.header-link:hover) {
+    transform: translateY(-4px);
   }
 
   :global(.header-link:active),

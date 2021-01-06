@@ -1,16 +1,39 @@
 <script lang="ts">
+  import cn from 'classnames';
+
+  import { InputType } from './types';
+  import { TEXTAREA_ROWS } from './constants';
+
   export let value: string = '';
   export let onChange: (() => void) | null = null;
   export let placeholder: string = '';
+  export let type: InputType = InputType.Simple;
+
+  $: classList = cn(
+    'input',
+    {
+      ['input--textarea']: type === InputType.Textarea,
+    },
+  );
 </script>
 
-<input
-  type="text"
-  class="input"
-  placeholder={placeholder}
-  bind:value={value}
-  on:input={onChange}
-/>
+{#if type === InputType.Simple}
+  <input
+    type="text"
+    class={classList}
+    placeholder={placeholder}
+    bind:value={value}
+    on:input={onChange}
+  />
+{:else if type === InputType.Textarea}
+  <textarea 
+    class={classList}
+    placeholder={placeholder}
+    rows={TEXTAREA_ROWS}
+    bind:value={value}
+    on:input={onChange}
+  ></textarea>
+{/if}
 
 <style>
   .input {
@@ -27,5 +50,11 @@
 
   .input::placeholder {
     color: #e1e1e1;
+  }
+
+  .input--textarea {
+    height: 150px;
+    padding: 20px;
+    resize: none;
   }
 </style>

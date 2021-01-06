@@ -3,6 +3,7 @@
 
   import Layout from './components/layout/';
   import Home from './screens/home';
+  import Contacts from './screens/contacts';
   import { Routes } from './constants/urls';
 
   let url = Routes.Home;
@@ -12,6 +13,9 @@
   <Layout>
     <Route path={Routes.Home}>
       <Home />
+    </Route>
+    <Route path={Routes.Contacts}>
+      <Contacts />
     </Route>
   </Layout>
 </Router>
