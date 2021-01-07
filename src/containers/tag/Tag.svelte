@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte';
   import { get } from 'svelte/store';
 
   import Tag, { TagType } from '../../components/tag';
@@ -30,12 +31,17 @@
     }
   };
 
-  tags.subscribe((state) => {
+  const unsubscribeTags = tags.subscribe((state) => {
     tag = tagGetters.getTagById(state, id);
   });
 
-  search.subscribe((state) => {
+  const unsubscribeSearch = search.subscribe((state) => {
     isSearched = searchGetters.isTagSearched(state, id);
+  });
+
+  onDestroy(() => {
+    unsubscribeTags();
+    unsubscribeSearch();
   });
 </script>
 

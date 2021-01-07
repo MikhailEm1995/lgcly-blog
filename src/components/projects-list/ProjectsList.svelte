@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte';
+
   import Post from '../../containers/post';
   import { projectsPics } from '../../entities/project-pics';
   import type { IProjectsPicsState } from '../../entities/project-pics';
@@ -8,9 +10,11 @@
 
   let pics: IProjectsPicsState = {};
 
-  projectsPics.subscribe((state) => {
+  const unsubscribe = projectsPics.subscribe((state) => {
     pics = state;
   });
+
+  onDestroy(unsubscribe);
 </script>
 
 <ul class="projects-list">

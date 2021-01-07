@@ -1,5 +1,6 @@
 <script lang="ts">
   import { Link } from 'svelte-routing';
+  import { onDestroy } from 'svelte';
 
   import Title, { TitleType } from '../title';
   import PostDate from '../post-date';
@@ -28,9 +29,11 @@
     };
   }
 
-  search.subscribe((state) => {
+  const unsubscribe = search.subscribe((state) => {
     searchQuery = state.query;
   });
+
+  onDestroy(unsubscribe);
 </script>
 
 <div class="post">
