@@ -28,6 +28,10 @@
 </div>
 
 <style>
+  .contacts {
+    margin-bottom: 100px;
+  }
+
   .contacts__row {
     margin-top: 40px;
   }
