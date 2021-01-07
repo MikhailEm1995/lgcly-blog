@@ -1,7 +1,14 @@
 <script lang="ts">
+  import { onDestroy } from 'svelte';
+
   import TagsList from '../../components/tags-list';
   import PostsList from '../../components/posts-list';
   import Search from '../../containers/search';
+  import { setters } from '../../entities/search';
+
+  onDestroy(() => {
+    setters.resetSearch();
+  });
 </script>
 
 <div class="home">

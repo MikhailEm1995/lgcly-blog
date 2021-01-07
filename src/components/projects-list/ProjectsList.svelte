@@ -2,6 +2,7 @@
   import Post from '../../containers/post';
   import { projectsPics } from '../../entities/project-pics';
   import type { IProjectsPicsState } from '../../entities/project-pics';
+  import Carousel from '../../components/carousel';
 
   export let projects: string[] = [];
 
@@ -16,7 +17,7 @@
   {#each projects as project}
     <li class="projects-list__item">
       <div class="projects-list__pics">
-        <img src={pics[project][0]} alt="No pic" class="projects-list__img">
+        <Carousel urls={pics[project].pictures} />
       </div>
       <div class="projects-list__post">
         <Post id={project} />
@@ -34,6 +35,20 @@
 
   .projects-list__item {
     display: grid;
-    grid: auto-flow / repeat(8, 1fr);
+    grid: auto-flow / 1fr 1fr;
+    margin-bottom: 40px;
+  }
+
+  .projects-list__pics {
+    height: 300px;
+    padding-right: 40px;
+  }
+
+  .projects-list__post {
+    transition: transform 0.3s ease-in;
+  }
+
+  .projects-list__post:hover {
+    transform: translateX(1%);
   }
 </style>

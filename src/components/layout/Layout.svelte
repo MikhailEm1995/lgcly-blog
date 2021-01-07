@@ -23,5 +23,6 @@
 
   .layout__content {
     margin-top: 150px;
+    position: relative;
   }
 </style>

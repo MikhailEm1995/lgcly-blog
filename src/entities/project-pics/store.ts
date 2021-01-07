@@ -5,11 +5,11 @@ import type { IProjectsPicsState } from './types';
 let state: IProjectsPicsState = {
   a: {
     id: 'a',
-    pictures: ['https://picsum.photos/200', 'https://picsum.photos/200'],
+    pictures: ['https://picsum.photos/id/300/300', 'https://picsum.photos/id/301/300'],
   },
   b: {
     id: 'b',
-    pictures: ['https://picsum.photos/200', 'https://picsum.photos/200'],
+    pictures: ['https://picsum.photos/id/300/300', 'https://picsum.photos/id/301/300'],
   },
 };
 

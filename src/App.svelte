@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Router, Route } from 'svelte-routing';
 
+  import Page from './components/page';
   import Layout from './components/layout/';
   import Home from './screens/home';
   import Contacts from './screens/contacts';
@@ -12,14 +13,16 @@
 
 <Router url={url}>
   <Layout>
-    <Route path={Routes.Home}>
-      <Home />
-    </Route>
-    <Route path={Routes.Contacts}>
-      <Contacts />
-    </Route>
-    <Route path={Routes.Projects}>
-      <Projects />
-    </Route>
+    <Page>
+      <Route path={Routes.Home}>
+        <Home />
+      </Route>
+      <Route path={Routes.Contacts}>
+        <Contacts />
+      </Route>
+      <Route path={Routes.Projects}>
+        <Projects />
+      </Route>
+    </Page>
   </Layout>
 </Router>
