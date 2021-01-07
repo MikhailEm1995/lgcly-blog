@@ -6,12 +6,12 @@
   <span class="footer__appeal">Follow us</span>
   <ul class="footer__social-list">
     <li class="footer__social-item">
-      <a href="https://www.instagram.com/lgclyapp/" class="footer__social-icon" title="Go to Instagram">
+      <a href="https://www.instagram.com/lgclyapp/" class="footer__social-icon" title="Go to Instagram" target="_blank">
         <img src="/assets/images/instagram.svg" alt="instagram" width="40" height="40" />
       </a>
     </li>
     <li>
-      <a href="https://twitter.com/lgcly_app" class="footer__social-icon" title="Go to Twitter">
+      <a href="https://twitter.com/lgcly_app" class="footer__social-icon" title="Go to Twitter" target="_blank">
         <img src="/assets/images/twitter.svg" alt="twitter" width="40" height="40" />
       </a>
     </li>
