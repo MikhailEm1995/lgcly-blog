@@ -45,3 +45,16 @@ body {
 .highlight {
   background-color: var(--color-highlight);
 }
+
+/* there wasn't better place for these styles */
+.article-section {
+  margin-bottom: 60px;
+}
+
+.article-title-primary {
+  margin-bottom: 60px;
+}
+
+.article-title-secondary {
+  margin-bottom: 50px;
+}

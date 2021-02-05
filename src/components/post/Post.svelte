@@ -5,7 +5,7 @@
   import Title, { TitleType } from '../title';
   import PostDate from '../post-date';
   import { TagType } from '../tag';
-  import Paragraph from '../paragraph';
+  import SearcheableParagraph from '../../containers/searcheable-paragraph';
   import TagsList from '../tags-list';
   import { search } from '../../entities/search';
   import { highlight } from '../../lib/highlight';
@@ -44,7 +44,7 @@
         <PostDate timestamp={timestamp} />
       {/if}
     </div>
-    <Paragraph text={brief} />
+    <SearcheableParagraph text={brief} />
   </Link>
   <div class="post__footer">
     <TagsList tags={tags} defaultType={TagType.NoBorder} />

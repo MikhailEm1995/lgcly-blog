@@ -6,8 +6,11 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import run from '@rollup/plugin-run';
 
 const production = !process.env.ROLLUP_WATCH;
+const isMainBuild = Boolean(process.env.MAIN_BUILD);
+const isArticlesBuild = Boolean(process.env.ARTICLES_BUILD);
 
 function serve() {
   let server;
@@ -30,7 +33,8 @@ function serve() {
   };
 }
 
-export default {
+const configs = [];
+const main = {
   input: 'src/main.ts',
   output: {
     sourcemap: true,
@@ -45,6 +49,7 @@ export default {
         // enable run-time checks when not in production
         dev: !production,
         hydratable: true,
+        ssr: true,
       }
     }),
     // we'll extract any component CSS out into
@@ -82,3 +87,42 @@ export default {
     clearScreen: false
   }
 };
+const articles = {
+  input: 'src/renderArticles.ts',
+  output: {
+    format: 'cjs',
+    file: 'src/dist/renderArticles.js',
+  },
+  plugins: [
+    svelte({
+      preprocess: sveltePreprocess(),
+      compilerOptions: {
+        // enable run-time checks when not in production
+        dev: false,
+        hydratable: true,
+        generate: 'ssr',
+      },
+    }),
+    css({ output: 'article.css' }),
+    resolve({
+      browser: true,
+      dedupe: ['svelte']
+    }),
+    commonjs(),
+    typescript({
+      sourceMap: false,
+      inlineSources: false,
+    }),
+    run(),
+  ],
+};
+
+if (isMainBuild) {
+  configs.push(main);
+}
+
+if (isArticlesBuild) {
+  configs.push(articles);
+}
+
+export default configs;
