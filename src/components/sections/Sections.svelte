@@ -24,7 +24,9 @@
   afterUpdate(init);
 
   onDestroy(() => {
-    window.removeEventListener('scroll', handleScroll);
+    window.__SCROLLBAR__
+      .getScrollElement()
+      .removeEventListener('scroll', handleScroll);
   });
 
   function init() {
@@ -41,7 +43,10 @@
       getRelativeScroll,
     });
     sections.draw();
-    window.addEventListener('scroll', handleScroll);
+
+    window.__SCROLLBAR__
+      .getScrollElement()
+      .addEventListener('scroll', handleScroll);
   }
 
   const handleScroll = throttle(

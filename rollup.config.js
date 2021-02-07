@@ -49,7 +49,6 @@ const main = {
         // enable run-time checks when not in production
         dev: !production,
         hydratable: true,
-        ssr: true,
       }
     }),
     // we'll extract any component CSS out into

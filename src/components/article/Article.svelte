@@ -56,9 +56,9 @@
       return 0;
     }
 
-    const { scrollY } = window;
+    const { scrollTop } = window.__SCROLLBAR__.getScrollElement();
 
-    return scrollY / (maxScroll || 1);
+    return scrollTop / (maxScroll || 1);
   }
 
   async function fetchData() {

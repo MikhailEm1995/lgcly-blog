@@ -3,9 +3,11 @@
 </script>
 
 <header class="header">
-  <a href="/" title="Go to Home page">
-    <img width="72" height="88" src="/assets/images/logo.png" alt="logo" class="header__logo">
-  </a>
+  <div>
+    <a href="/" title="Go to Home page">
+      <img width="72" height="88" src="/assets/images/logo.png" alt="logo" class="header__logo">
+    </a>
+  </div>
   <nav class="navigation">
     <ul class="navigation__list">
       <li class="navigation__item">

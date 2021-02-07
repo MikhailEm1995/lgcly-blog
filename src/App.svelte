@@ -15,22 +15,30 @@
 
 <Router url={url}>
   <Layout>
-    <Page>
-      <Route path={Routes.Home}>
+    <Route path={Routes.Home}>
+      <Page>
         <Home />
-      </Route>
-      <Route path={Routes.Contacts}>
+      </Page>
+    </Route>
+    <Route path={Routes.Contacts}>
+      <Page>
         <Contacts />
-      </Route>
-      <Route path={Routes.Projects}>
+      </Page>
+    </Route>
+    <Route path={Routes.Projects}>
+      <Page>
         <Projects />
-      </Route>
-      <Route path={Routes.About}>
+      </Page>
+    </Route>
+    <Route path={Routes.About}>
+      <Page>
         <About />
-      </Route>
-      <Route path={Routes.Post}>
+      </Page>
+    </Route>
+    <Route path={Routes.Post}>
+      <Page>
         <Article />
-      </Route>
-    </Page>
+      </Page>
+    </Route>
   </Layout>
 </Router>

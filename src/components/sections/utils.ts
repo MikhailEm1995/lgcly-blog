@@ -200,6 +200,5 @@ function isPointInsideCircle(
   const length = Math.sqrt(
     (point.x - circle.x) ** 2 + (point.y - circle.y) ** 2
   );
-debugger;
   return length <= circle.radius;
 }

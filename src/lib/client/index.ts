@@ -1,9 +1,6 @@
 export function getMaxScroll() {
   const { innerHeight } = window;
-  const {
-    body: { scrollHeight, offsetHeight },
-    documentElement: { clientHeight, scrollHeight: deScrollHeight, offsetHeight: deOffsetHeight },
-  } = document;
+  const { scrollHeight, offsetHeight } = window.__SCROLLBAR__.getScrollElement();
 
-  return Math.max(scrollHeight, offsetHeight, clientHeight, deScrollHeight, deOffsetHeight) - innerHeight;
+  return Math.max(scrollHeight, offsetHeight) - innerHeight;
 }
